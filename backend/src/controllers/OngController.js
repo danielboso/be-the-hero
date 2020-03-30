@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const generateImoqueId = require('../utils/generateImoqueId');
 const connection = require('../database/connection')
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
       
     const { name, email, whatsapp, city, uf } = request.body;
 
-    const id = crypto.randomBytes(4).toString('HEX');
+    const id = generateImoqueId();
 
     await connection('ongs').insert({
       id,
